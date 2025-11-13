@@ -1,0 +1,76 @@
+{
+  "webProjects": [
+    {
+      "id": 6,
+      "title": "Vision-Master",
+      "description": "Vision Master is an interactive web app designed to improve eye focus and reduce digital strain through dynamic eye-tracking exercises. It features multiple training levels with moving patterns that help strengthen visual coordination and concentration.",
+      "stack": ["HTML", "CSS", "JavaScript"],
+      "links": { "github": "https://github.com/manish-surya-r/vision-master", "live": "https://vision-master.netlify.app/" },
+      "image": "/images/projects/vision-master.png"
+    },
+    {
+      "id": 7,
+      "title": "3D Interactive Chess Game",
+      "description": "A browser-based 3D chess application featuring realistic piece movement, dynamic lighting, and interactive camera controls for an immersive gameplay experience.",
+      "stack": ["Three.js", "JavaScript", "HTML", "CSS", "Vite", "React"],
+      "links": { "github": "https://github.com/manish-surya-r/3d-chess-app", "live": "https://manish-surya-r.github.io/3d-chess-app/" },
+      "image": "/images/projects/3d-chess.png"
+    },
+    {
+      "id": 8,
+      "title": "PyClean: AI-Powered Python Code Beautifier",
+      "description": "A web application that uses the Google Gemini API to automatically refactor and format messy Python code to PEP 8 standards, while showing a live before-and-after comparison and detailed explanations of each change.",
+      "stack": ["React", "TypeScript", "Tailwind CSS", "Prism.js", "Google Gemini API"],
+      "links": { "github": "https://github.com/manish-surya-r/pyclean" },
+      "image": "/images/projects/pyclean.png"
+    },
+    {
+      "id": 9,
+      "title": "Finance Tracker Web App",
+      "description": "A web-based finance tracker that lets users log income and expenses, visualize spending patterns through charts, and better manage personal budgets in real time.",
+      "stack": ["React", "TypeScript", "Tailwind CSS", "Chart.js", "LocalStorage / Firebase"],
+      "links": { "github": "https://github.com/manish-surya-r/finance-tracker-app", "live": "https://manish-surya-r.github.io/finance-tracker-app/"},
+      "image": "/images/projects/finance-tracker.png"
+    },
+    {
+      "id": 10,
+      "title": "Simple Unix Shell in C",
+      "description": "A console-based Unix-style shell written in C, supporting command parsing, execution, built-in commands, and basic piping/redirects.",
+      "stack": ["C", "Makefile", "Linux"],
+      "links": { "github": "https://github.com/manish-surya-r/shell-using-c" },
+      "image": "/images/projects/shell-using-c.png"
+    }
+  ],
+
+  "otherProjects": [
+  {
+    "id": 1,
+    "title": "Pistachio Classification",
+    "description": "Built a machine learning model to classify pistachio varieties based on morphological features, improving quality control automation in agricultural processing.",
+    "stack": ["Python", "scikit-learn", "pandas", "Matplotlib"],
+    "links": { "github": "https://github.com/manish-surya/python-projects/tree/main/Pistachio_Classification" }
+  },
+  {
+    "id": 2,
+    "title": "Diabetes Prediction Using Neural Networks",
+    "description": "Developed a neural network-based predictive model to identify diabetes risk from clinical data, enabling early diagnosis and healthcare decision support.",
+    "stack": ["Python", "TensorFlow/Keras", "pandas", "NumPy", "Streamlit"],
+    "links": { "github": "https://github.com/manish-surya/machine-learning-projects/tree/main/health-data-projects/diabetes-prediction" }
+  },
+  {
+    "id": 3,
+    "title": "Customer Intent Segmentation",
+    "description": "Performed customer segmentation using clustering techniques to uncover behavior patterns and support personalized marketing strategies.",
+    "stack": ["Python", "scikit-learn", "pandas", "Seaborn", "Tableau/Power BI"],
+    "links": { "github": "https://github.com/manish-surya/customer-intent-segmentation" }
+  },
+  {
+    "id": 4,
+    "title": "Network Intrusion Prediction",
+    "description": "Implemented a machine learning intrusion detection system (IDS) to classify network traffic and identify malicious activities in cybersecurity environments.",
+    "stack": ["Python", "scikit-learn", "pandas", "NumPy", "Matplotlib"],
+    "links": { "github": "https://github.com/manish-surya/python-projects/tree/main/Network_Intrution_Prediction" }
+  }
+
+  ]
+}

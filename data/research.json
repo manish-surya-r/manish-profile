@@ -1,0 +1,16 @@
+
+[
+  {
+    "title": "Transformers: A Graph Processing Perspective",
+    "conference": "IEEE High Performance Extreme Computing (HPEC)",
+    "description": "Transformers have revolutionized machine learning applications with attention mechanisms but face scalability and memory bottlenecks. This paper presents techniques such as memory-efficient attention, low-rank approximations, and three-dimensional parallelism to optimize large-scale deployments, particularly in domains like genomics. It also introduces methods for coarsened sparse attention using token aggregation to enhance efficiency.",
+    "paper_link": "https://ieeexplore.ieee.org/document/10938487"
+  },
+  {
+    "title": "Analysis of Linguistic and Math Features for Classification of Math Word Problems: Insights and Future Direction",
+    "conference": "International Journal of Management and Applied Science",
+    "description": "This study investigates the classification of Math Word Problems (MWPs) by difficulty using ML techniques and the MATH dataset. It highlights the limitations of current models in capturing both linguistic and mathematical features and proposes improved feature engineering and mathematical tokenizers. It also explores the potential of LLMs like GPT-3 in automating MWP generation and classification, aiming to reduce educator workload.",
+    "paper_link": "https://ijmas.iraj.in/paper_detail.php?paper_id=20128&name=Analysis_of_Linguistics_and_Math_Features_for_Classification_of_Math_Word_Problems:_Insights_and_Future_Direction"
+  }
+]
+

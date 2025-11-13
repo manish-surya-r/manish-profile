@@ -1,0 +1,25 @@
+[
+  {
+    "degree": "Master of Science",
+    "major": "Computer Science",
+    "university": "Case Western Reserve University",
+    "location": "Cleveland, Ohio, USA",
+    "period": "Jan 2023 – May 2024",
+    "key_points": [
+      "GPA: 3.9 / 4.0",
+      "Coursework: Machine Learning, Computer Vision, Big Data, Designing High Performant Systems for AI, High Performance Data and Computing, Computer Networks, Computer Security, Software Engineering, Data Mining, Database Systems",
+      "Award: Seigal Lifelong Learning Scholarship (25% tuition)"
+    ]
+  },
+  {
+    "degree": "Bachelor of Technology",
+    "major": "Computer Science & Engineering",
+    "university": "SRKR Engineering College",
+    "location": "Bhimavaram, India",
+    "period": "Jul 2018 – May 2022",
+    "key_points": [
+      "CGPA: 8.65 / 10.0",
+      "Focus: Data Structures, Algorithms, Software Engineering, Foundations of AI/ML"
+    ]
+  }
+]

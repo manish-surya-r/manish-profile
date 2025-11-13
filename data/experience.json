@@ -1,0 +1,53 @@
+
+[
+  {
+    "role": "Web Developer",
+    "company": "Profile DM",
+    "location": "Novi, MI (Remote)",
+    "period": "Aug 2025 – Present",
+    "description": [
+      "Built and optimized responsive web applications using React.js, JavaScript, and CSS, improving load speed by 30% and user engagement by 20%.",
+      "Collaborated with designers and backend developers to enhance UI/UX, reducing user-reported issues by 25%."
+    ]
+  },
+  {
+    "role": "Research Engineer (OMEGA)",
+    "company": "Case Western Reserve University",
+    "location": "Cleveland, OH",
+    "period": "Jan 2025 – Jul 2025",
+    "description": [
+      "Optimized cell growth parameters using Bayesian Optimization.",
+      "Conducted mechanical testing on 3D-printed PLA samples, improving structural stability and contributing to research outputs."
+    ]
+  },
+  {
+    "role": "Research Assistant",
+    "company": "Case Western Reserve University",
+    "location": "Cleveland, OH",
+    "period": "May 2024 – Jan 2025",
+    "description": [
+      "Redesigned Transformer architecture using vertex-centric graph algorithms, enabling efficient random sparse attention.",
+      "Developed graph-based computation pipelines and validated scalability with near-linear computation time reduction."
+    ]
+  },
+  {
+    "role": "Graduate Research Assistant",
+    "company": "Case Western Reserve University",
+    "location": "Cleveland, OH",
+    "period": "Jan 2023 – Aug 2023",
+    "description": [
+      "Developed ML/DL models for classification of math word problems by difficulty.",
+      "Used factorial experimentation to optimize model performance and identify key influencing factors."
+    ]
+  },
+  {
+    "role": "Data Science Intern",
+    "company": "Personify",
+    "location": "Bangalore, India",
+    "period": "May 2022 – Jul 2022",
+    "description": [
+      "Built and deployed an AI-powered chatbot using Dialogflow CX and Python, automating customer interaction for a coffee shop.",
+      "Improved business efficiency and demonstrated problem-solving in real-world deployment."
+    ]
+  }
+]
