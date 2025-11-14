@@ -3,12 +3,10 @@ import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig(({ mode }) => {
-  // Load environment variables
   const env = loadEnv(mode, '.', '');
 
   return {
-    // Base path for GitHub Pages
-    base: '/manish-portfolio/',
+    // REMOVE the GitHub Pages base
     server: {
       port: 3000,
       host: '0.0.0.0',
