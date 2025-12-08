@@ -115,6 +115,8 @@ const Skills: React.FC = () => {
         { name: 'Matplotlib, Seaborn', level: 85 },
         { name: 'CUDA, pyCUDA', level: 75 },
         { name: 'Bayesian Optimization', level: 70 },
+        { name: 'Databrics', level: 80 },
+        { name: 'PySpark', level: 75 },
       ],
       projects: [
         { name: 'Pistachio Classification', link: 'https://github.com/manish-surya/python-projects/tree/main/Pistachio_Classification' },
