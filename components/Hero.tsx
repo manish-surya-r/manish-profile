@@ -39,7 +39,7 @@ const Hero: React.FC = () => {
       <div className="relative z-10 px-6">
         {/* Profile Image */}
         <img
-          src="https://media.licdn.com/dms/image/v2/D4E03AQF_lTqu4oz7Rg/profile-displayphoto-crop_800_800/B4EZiApKs0GYAI-/0/1754504934864?e=1766620800&v=beta&t=yYFWny6cDDch4tOTdba0c4MQIJV7PlLj4o4wu1c4onk"
+          src="https://media.licdn.com/dms/image/v2/D4E03AQF_lTqu4oz7Rg/profile-displayphoto-crop_800_800/B4EZiApKs0GYAI-/0/1754504934864?e=1772668800&v=beta&t=ALJEtjTmsV6oltlmW8RaE_6CWFtrMkSTrKscqJa0ZQE"
           alt="Manish Routhu"
           className="w-48 h-48 md:w-56 md:h-56 rounded-full mx-auto mb-6 shadow-lg ring-4 ring-indigo-300/40 object-cover -mt-6"
         />
