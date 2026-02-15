@@ -81,7 +81,7 @@ const Hero: React.FC = () => {
             📁 View Projects
           </a>
           <a
-            href="/resume.pdf"
+            href="https://drive.google.com/file/d/1_HFgXRPOqo16NFZNN8whU8HnJYB68toy/view?usp=sharing"
             download
             className="bg-gradient-to-r from-teal-400 to-indigo-500 text-white px-6 py-3 rounded-lg font-semibold hover:scale-105 shadow-md hover:shadow-lg transition-all text-center"
             style={{ minWidth: "180px" }}
