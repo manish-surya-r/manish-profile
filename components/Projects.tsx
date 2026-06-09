@@ -60,17 +60,19 @@ const ProjectImage: React.FC<{ src?: string; title: string }> = ({ src, title })
 };
 
 const Projects: React.FC = () => {
-  const [filter, setFilter] = useState<'all' | 'extensions' | 'webApps' | 'otherProjects'>('all');
+  const [filter, setFilter] = useState<'all' | 'extensions' | 'webApps' | 'dataProjects' | 'otherProjects'>('all');
 
   const extensions = (projectsData.vscodeExtensions || []) as ProjectType[];
   const webApps = (projectsData.webApps || []) as ProjectType[];
+  const dataProjects = (projectsData.dataProjects || []) as ProjectType[];
   const otherProjects = (projectsData.otherProjects || []) as ProjectType[];
 
   const taggedExtensions = extensions.map(p => ({ ...p, category: 'extensions' as const }));
   const taggedWebApps = webApps.map(p => ({ ...p, category: 'webApps' as const }));
+  const taggedDataProjects = dataProjects.map(p => ({ ...p, category: 'dataProjects' as const }));
   const taggedOthers = otherProjects.map(p => ({ ...p, category: 'otherProjects' as const }));
   
-  const allProjects = [...taggedExtensions, ...taggedWebApps, ...taggedOthers];
+  const allProjects = [...taggedExtensions, ...taggedWebApps, ...taggedDataProjects, ...taggedOthers];
   
   const filteredProjects = allProjects.filter(proj => {
     if (filter === 'all') return true;
@@ -85,7 +87,7 @@ const Projects: React.FC = () => {
           <h2 className="text-4xl font-bold tracking-tight">Projects & Extensions</h2>
           <div className="h-1 bg-amber-500 w-16 mx-auto mt-3 rounded-full"></div>
           <p className="text-slate-500 dark:text-slate-400 mt-4 max-w-md mx-auto">
-            Explore VS Code extensions, web applications, PyPI libraries, and system utilities.
+            Explore VS Code extensions, web applications, data science, and core system utilities.
           </p>
         </div>
 
@@ -138,7 +140,7 @@ const Projects: React.FC = () => {
         <div className="flex justify-center gap-2 mb-12 bg-slate-200/50 dark:bg-slate-800/40 p-1.5 rounded-2xl w-fit mx-auto border border-slate-300/30 dark:border-slate-700/30 backdrop-blur-sm flex-wrap">
           <button
             onClick={() => setFilter('all')}
-            className={`px-6 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
+            className={`px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
               filter === 'all'
                 ? 'bg-amber-500 text-white shadow-sm'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
@@ -148,7 +150,7 @@ const Projects: React.FC = () => {
           </button>
           <button
             onClick={() => setFilter('extensions')}
-            className={`px-6 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
+            className={`px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
               filter === 'extensions'
                 ? 'bg-amber-500 text-white shadow-sm'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
@@ -158,7 +160,7 @@ const Projects: React.FC = () => {
           </button>
           <button
             onClick={() => setFilter('webApps')}
-            className={`px-6 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
+            className={`px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
               filter === 'webApps'
                 ? 'bg-amber-500 text-white shadow-sm'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
@@ -167,14 +169,24 @@ const Projects: React.FC = () => {
             Web Applications
           </button>
           <button
+            onClick={() => setFilter('dataProjects')}
+            className={`px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
+              filter === 'dataProjects'
+                ? 'bg-amber-500 text-white shadow-sm'
+                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+            }`}
+          >
+            Data Analysis
+          </button>
+          <button
             onClick={() => setFilter('otherProjects')}
-            className={`px-6 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
+            className={`px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
               filter === 'otherProjects'
                 ? 'bg-amber-500 text-white shadow-sm'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
-            CLIs & Libraries
+            CLIs & Packages
           </button>
         </div>
 
@@ -189,6 +201,7 @@ const Projects: React.FC = () => {
               let categoryLabel = 'Project';
               if (proj.category === 'extensions') categoryLabel = 'VS Code Extension';
               else if (proj.category === 'webApps') categoryLabel = 'Web Application';
+              else if (proj.category === 'dataProjects') categoryLabel = 'Data Analysis';
               else if (proj.category === 'otherProjects') categoryLabel = 'CLI / Library';
 
               return (

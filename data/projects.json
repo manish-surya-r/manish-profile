@@ -47,6 +47,26 @@
         "live": "https://ai-risk-assessment-three.vercel.app/"
       },
       "image": "/images/projects/ai_risk_assessment_scifi.png"
+    },
+    {
+      "title": "Flight Reservation System",
+      "description": "A database-driven reservation application in Python, utilizing object-oriented principles, modular architecture, and flight booking transaction modeling.",
+      "stack": ["Python", "SQLite", "OOP", "Database Management"],
+      "links": {
+        "github": "https://github.com/manish-surya/flight-reservation-system/tree/master/flight-reservation-system/flight_reservation"
+      },
+      "image": "/images/projects/flight_reservation_scifi.png"
+    }
+  ],
+  "dataProjects": [
+    {
+      "title": "FRI Data Project",
+      "description": "Data analysis and statistical modeling pipeline utilizing Python to analyze, visualize, and extract structural patterns from complex experimental datasets.",
+      "stack": ["Python", "Pandas", "Matplotlib", "Statistics"],
+      "links": {
+        "github": "https://github.com/manish-surya/FRI-data-project"
+      },
+      "image": "/images/projects/fri_data_scifi.png"
     }
   ],
   "otherProjects": [
@@ -59,24 +79,6 @@
         "github": "https://github.com/manish-surya/system-design"
       },
       "image": "/images/projects/system_design_scifi.png"
-    },
-    {
-      "title": "Flight Reservation System",
-      "description": "A database-driven reservation application in Python, utilizing object-oriented principles, modular architecture, and flight booking transaction modeling.",
-      "stack": ["Python", "SQLite", "OOP", "Database Management"],
-      "links": {
-        "github": "https://github.com/manish-surya/flight-reservation-system/tree/master/flight-reservation-system/flight_reservation"
-      },
-      "image": "/images/projects/flight_reservation_scifi.png"
-    },
-    {
-      "title": "FRI Data Project",
-      "description": "Data analysis and statistical modeling pipeline utilizing Python to analyze, visualize, and extract structural patterns from complex experimental datasets.",
-      "stack": ["Python", "Pandas", "Matplotlib", "Statistics"],
-      "links": {
-        "github": "https://github.com/manish-surya/FRI-data-project"
-      },
-      "image": "/images/projects/fri_data_scifi.png"
     }
   ]
 }
