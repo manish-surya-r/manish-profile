@@ -60,15 +60,17 @@ const ProjectImage: React.FC<{ src?: string; title: string }> = ({ src, title })
 };
 
 const Projects: React.FC = () => {
-  const [filter, setFilter] = useState<'all' | 'extensions' | 'apps'>('all');
+  const [filter, setFilter] = useState<'all' | 'extensions' | 'webApps' | 'otherProjects'>('all');
 
   const extensions = (projectsData.vscodeExtensions || []) as ProjectType[];
-  const applications = (projectsData.applications || []) as ProjectType[];
+  const webApps = (projectsData.webApps || []) as ProjectType[];
+  const otherProjects = (projectsData.otherProjects || []) as ProjectType[];
 
   const taggedExtensions = extensions.map(p => ({ ...p, category: 'extensions' as const }));
-  const taggedApps = applications.map(p => ({ ...p, category: 'apps' as const }));
+  const taggedWebApps = webApps.map(p => ({ ...p, category: 'webApps' as const }));
+  const taggedOthers = otherProjects.map(p => ({ ...p, category: 'otherProjects' as const }));
   
-  const allProjects = [...taggedExtensions, ...taggedApps];
+  const allProjects = [...taggedExtensions, ...taggedWebApps, ...taggedOthers];
   
   const filteredProjects = allProjects.filter(proj => {
     if (filter === 'all') return true;
@@ -83,7 +85,7 @@ const Projects: React.FC = () => {
           <h2 className="text-4xl font-bold tracking-tight">Projects & Extensions</h2>
           <div className="h-1 bg-amber-500 w-16 mx-auto mt-3 rounded-full"></div>
           <p className="text-slate-500 dark:text-slate-400 mt-4 max-w-md mx-auto">
-            Explore VS Code extensions, PyPI libraries, databases, and neural models.
+            Explore VS Code extensions, web applications, PyPI libraries, and system utilities.
           </p>
         </div>
 
@@ -133,7 +135,7 @@ const Projects: React.FC = () => {
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex justify-center gap-2 mb-12 bg-slate-200/50 dark:bg-slate-800/40 p-1.5 rounded-2xl w-fit mx-auto border border-slate-300/30 dark:border-slate-700/30 backdrop-blur-sm">
+        <div className="flex justify-center gap-2 mb-12 bg-slate-200/50 dark:bg-slate-800/40 p-1.5 rounded-2xl w-fit mx-auto border border-slate-300/30 dark:border-slate-700/30 backdrop-blur-sm flex-wrap">
           <button
             onClick={() => setFilter('all')}
             className={`px-6 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
@@ -155,14 +157,24 @@ const Projects: React.FC = () => {
             VS Code Extensions
           </button>
           <button
-            onClick={() => setFilter('apps')}
+            onClick={() => setFilter('webApps')}
             className={`px-6 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
-              filter === 'apps'
+              filter === 'webApps'
                 ? 'bg-amber-500 text-white shadow-sm'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
-            Apps & CLIs
+            Web Applications
+          </button>
+          <button
+            onClick={() => setFilter('otherProjects')}
+            className={`px-6 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
+              filter === 'otherProjects'
+                ? 'bg-amber-500 text-white shadow-sm'
+                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+            }`}
+          >
+            CLIs & Libraries
           </button>
         </div>
 
@@ -174,6 +186,11 @@ const Projects: React.FC = () => {
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((proj, i) => {
               const cardColor = COLORS[i % COLORS.length];
+              let categoryLabel = 'Project';
+              if (proj.category === 'extensions') categoryLabel = 'VS Code Extension';
+              else if (proj.category === 'webApps') categoryLabel = 'Web Application';
+              else if (proj.category === 'otherProjects') categoryLabel = 'CLI / Library';
+
               return (
                 <motion.div
                   layout
@@ -192,7 +209,7 @@ const Projects: React.FC = () => {
                     <div>
                       {/* Badge / Category */}
                       <span className="inline-block text-[10px] uppercase font-bold tracking-widest px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-400 mb-3">
-                        {proj.category === 'extensions' ? 'VS Code Extension' : 'Package / App'}
+                        {categoryLabel}
                       </span>
 
                       <h3 className="text-xl font-bold tracking-tight mb-2 group-hover:underline transition-all" style={{ color: cardColor }}>

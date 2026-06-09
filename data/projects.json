@@ -29,7 +29,27 @@
       "image": "/images/projects/cipherbox_scifi.png"
     }
   ],
-  "applications": [
+  "webApps": [
+    {
+      "title": "Elysian Modelling",
+      "description": "Interactive browser neural network sandbox visualizer. Create, edit, and train feedforward neural networks live in the browser with visual node weight paths.",
+      "stack": ["HTML5", "CSS3", "JavaScript", "Neural Networks"],
+      "links": {
+        "live": "https://manish-surya-r.github.io/elysian-modelling/"
+      },
+      "image": "/images/projects/elysian_modelling_scifi.png"
+    },
+    {
+      "title": "AI Risk Assessment",
+      "description": "An interactive web application designed to evaluate, audit, and analyze compliance and risk parameters in large-scale AI system architectures.",
+      "stack": ["React", "TypeScript", "Tailwind CSS", "AI Security Audits"],
+      "links": {
+        "live": "https://ai-risk-assessment-three.vercel.app/"
+      },
+      "image": "/images/projects/ai_risk_assessment_scifi.png"
+    }
+  ],
+  "otherProjects": [
     {
       "title": "system-design (PyPI Package)",
       "description": "An open-source Python package and CLI tool on PyPI that automates folder layouts, generates design patterns boilerplate, and creates architectural diagrams.",
@@ -39,15 +59,6 @@
         "github": "https://github.com/manish-surya/system-design"
       },
       "image": "/images/projects/system_design_scifi.png"
-    },
-    {
-      "title": "Elysian Modelling",
-      "description": "Interactive browser neural network sandbox visualizer. Create, edit, and train feedforward neural networks live in the browser with visual node weight paths.",
-      "stack": ["HTML5", "CSS3", "JavaScript", "Neural Networks"],
-      "links": {
-        "live": "https://manish-surya-r.github.io/elysian-modelling/"
-      },
-      "image": "/images/projects/elysian_modelling_scifi.png"
     },
     {
       "title": "Flight Reservation System",
