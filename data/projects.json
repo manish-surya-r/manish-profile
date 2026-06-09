@@ -1,76 +1,71 @@
 {
-  "webProjects": [
+  "vscodeExtensions": [
     {
-      "id": 6,
-      "title": "Vision-Master",
-      "description": "Vision Master is an interactive web app designed to improve eye focus and reduce digital strain through dynamic eye-tracking exercises. It features multiple training levels with moving patterns that help strengthen visual coordination and concentration.",
-      "stack": ["HTML", "CSS", "JavaScript"],
-      "links": { "github": "https://github.com/manish-surya-r/vision-master", "live": "https://vision-master.netlify.app/" },
-      "image": "/images/projects/vision-master.png"
+      "title": "PyClean",
+      "description": "A VS Code extension to refactor, clean, and format Python code following PEP 8 guidelines. Features AI-powered refactoring capabilities using Gemini.",
+      "stack": ["TypeScript", "VS Code API", "Google Gemini API"],
+      "links": {
+        "marketplace": "https://marketplace.visualstudio.com/items?itemName=manish-surya-r.pyclean",
+        "github": "https://github.com/manish-surya-r/pyclean"
+      },
+      "image": "/images/projects/pyclean_scifi.png"
     },
     {
-      "id": 7,
-      "title": "3D Interactive Chess Game",
-      "description": "A browser-based 3D chess application featuring realistic piece movement, dynamic lighting, and interactive camera controls for an immersive gameplay experience.",
-      "stack": ["Three.js", "JavaScript", "HTML", "CSS", "Vite", "React"],
-      "links": { "github": "https://github.com/manish-surya-r/3d-chess-app", "live": "https://manish-surya-r.github.io/3d-chess-app/" },
-      "image": "/images/projects/3d-chess.png"
+      "title": "Invisible Mark",
+      "description": "A VS Code extension that enables zero-width character-based invisible watermarking and metadata embedding inside code files for source protection.",
+      "stack": ["TypeScript", "VS Code API", "Unicode Security"],
+      "links": {
+        "marketplace": "https://marketplace.visualstudio.com/items?itemName=manish-surya-r.invisible-mark"
+      },
+      "image": "/images/projects/invisible_mark_scifi.png"
     },
     {
-      "id": 8,
-      "title": "PyClean: AI-Powered Python Code Beautifier",
-      "description": "A web application that uses the Google Gemini API to automatically refactor and format messy Python code to PEP 8 standards, while showing a live before-and-after comparison and detailed explanations of each change.",
-      "stack": ["React", "TypeScript", "Tailwind CSS", "Prism.js", "Google Gemini API"],
-      "links": { "github": "https://github.com/manish-surya-r/pyclean" },
-      "image": "/images/projects/pyclean.png"
-    },
-    {
-      "id": 9,
-      "title": "Finance Tracker Web App",
-      "description": "A web-based finance tracker that lets users log income and expenses, visualize spending patterns through charts, and better manage personal budgets in real time.",
-      "stack": ["React", "TypeScript", "Tailwind CSS", "Chart.js", "LocalStorage / Firebase"],
-      "links": { "github": "https://github.com/manish-surya-r/finance-tracker-app", "live": "https://manish-surya-r.github.io/finance-tracker-app/"},
-      "image": "/images/projects/finance-tracker.png"
-    },
-    {
-      "id": 10,
-      "title": "Simple Unix Shell in C",
-      "description": "A console-based Unix-style shell written in C, supporting command parsing, execution, built-in commands, and basic piping/redirects.",
-      "stack": ["C", "Makefile", "Linux"],
-      "links": { "github": "https://github.com/manish-surya-r/shell-using-c" },
-      "image": "/images/projects/shell-using-c.png"
+      "title": "CipherBox",
+      "description": "A secure editor extension to encrypt and decrypt sensitive files, configuration details, and credentials directly inside VS Code environments.",
+      "stack": ["TypeScript", "VS Code API", "Cryptography"],
+      "links": {
+        "marketplace": "https://marketplace.visualstudio.com/items?itemName=manish-surya-r.cipherbox"
+      },
+      "image": "/images/projects/cipherbox_scifi.png"
     }
   ],
-
-  "otherProjects": [
-  {
-    "id": 1,
-    "title": "Pistachio Classification",
-    "description": "Built a machine learning model to classify pistachio varieties based on morphological features, improving quality control automation in agricultural processing.",
-    "stack": ["Python", "scikit-learn", "pandas", "Matplotlib"],
-    "links": { "github": "https://github.com/manish-surya/python-projects/tree/main/Pistachio_Classification" }
-  },
-  {
-    "id": 2,
-    "title": "Diabetes Prediction Using Neural Networks",
-    "description": "Developed a neural network-based predictive model to identify diabetes risk from clinical data, enabling early diagnosis and healthcare decision support.",
-    "stack": ["Python", "TensorFlow/Keras", "pandas", "NumPy", "Streamlit"],
-    "links": { "github": "https://github.com/manish-surya/machine-learning-projects/tree/main/health-data-projects/diabetes-prediction" }
-  },
-  {
-    "id": 3,
-    "title": "Customer Intent Segmentation",
-    "description": "Performed customer segmentation using clustering techniques to uncover behavior patterns and support personalized marketing strategies.",
-    "stack": ["Python", "scikit-learn", "pandas", "Seaborn", "Tableau/Power BI"],
-    "links": { "github": "https://github.com/manish-surya/customer-intent-segmentation" }
-  },
-  {
-    "id": 4,
-    "title": "Network Intrusion Prediction",
-    "description": "Implemented a machine learning intrusion detection system (IDS) to classify network traffic and identify malicious activities in cybersecurity environments.",
-    "stack": ["Python", "scikit-learn", "pandas", "NumPy", "Matplotlib"],
-    "links": { "github": "https://github.com/manish-surya/python-projects/tree/main/Network_Intrution_Prediction" }
-  }
-
+  "applications": [
+    {
+      "title": "system-design (PyPI Package)",
+      "description": "An open-source Python package and CLI tool on PyPI that automates folder layouts, generates design patterns boilerplate, and creates architectural diagrams.",
+      "stack": ["Python", "CLI", "PyPI", "OOP Design Patterns"],
+      "links": {
+        "pypi": "https://pypi.org/project/system-design/",
+        "github": "https://github.com/manish-surya/system-design"
+      },
+      "image": "/images/projects/system_design_scifi.png"
+    },
+    {
+      "title": "Elysian Modelling",
+      "description": "Interactive browser neural network sandbox visualizer. Create, edit, and train feedforward neural networks live in the browser with visual node weight paths.",
+      "stack": ["HTML5", "CSS3", "JavaScript", "Neural Networks"],
+      "links": {
+        "live": "https://manish-surya-r.github.io/elysian-modelling/"
+      },
+      "image": "/images/projects/elysian_modelling_scifi.png"
+    },
+    {
+      "title": "Flight Reservation System",
+      "description": "A database-driven reservation application in Python, utilizing object-oriented principles, modular architecture, and flight booking transaction modeling.",
+      "stack": ["Python", "SQLite", "OOP", "Database Management"],
+      "links": {
+        "github": "https://github.com/manish-surya/flight-reservation-system/tree/master/flight-reservation-system/flight_reservation"
+      },
+      "image": "/images/projects/flight_reservation_scifi.png"
+    },
+    {
+      "title": "FRI Data Project",
+      "description": "Data analysis and statistical modeling pipeline utilizing Python to analyze, visualize, and extract structural patterns from complex experimental datasets.",
+      "stack": ["Python", "Pandas", "Matplotlib", "Statistics"],
+      "links": {
+        "github": "https://github.com/manish-surya/FRI-data-project"
+      },
+      "image": "/images/projects/fri_data_scifi.png"
+    }
   ]
 }

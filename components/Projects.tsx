@@ -1,212 +1,278 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { SiVisualstudiocode, SiPypi } from "react-icons/si";
+import { VscCode } from "react-icons/vsc";
+import projectsData from "../data/projects.json";
 
-// Icons
-const GitHubIcon = () => (
-  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-  </svg>
-);
+type ProjectLinks = {
+  marketplace?: string;
+  github?: string;
+  pypi?: string;
+  live?: string;
+};
 
-const ExternalLinkIcon = () => (
-  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-  </svg>
-);
+type ProjectType = {
+  title: string;
+  description: string;
+  stack: string[];
+  links: ProjectLinks;
+  image?: string;
+};
 
 const COLORS = [
-  "#6366F1",
-  "#14B8A6",
-  "#F59E0B",
-  "#EC4899",
-  "#10B981",
-  "#F43F5E",
-  "#8B5CF6",
-  "#F97316",
+  "#6366F1", // Indigo
+  "#14B8A6", // Teal
+  "#F59E0B", // Amber
+  "#EC4899", // Pink
+  "#10B981", // Emerald
+  "#8B5CF6", // Violet
 ];
 
-const SectionWrapper = ({ children, id, title }) => (
-  <section id={id} className="mb-20">
-    <div className="text-center mb-12">
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="text-4xl font-bold mb-4"
-      >
-        {title}
-      </motion.h2>
-      <motion.div
-        initial={{ width: 0 }}
-        whileInView={{ width: "6rem" }}
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="h-1 bg-blue-500 mx-auto"
-      ></motion.div>
-    </div>
-    {children}
-  </section>
-);
+// Handles image loading state and fallback gracefully to prevent empty card headers
+const ProjectImage: React.FC<{ src?: string; title: string }> = ({ src, title }) => {
+  const [hasError, setHasError] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
-// ✅ All projects (merged and inline)
-const allProjects = [
-  {
-    title: "Vision-Master",
-    description:
-      "An interactive web app designed to improve eye focus and reduce digital strain through dynamic eye-tracking exercises.",
-    stack: ["HTML", "CSS", "JavaScript"],
-    links: {
-      github: "https://github.com/manish-surya-r/vision-master",
-      live: "https://vision-master.netlify.app/",
-    },
-  },
-  {
-    title: "3D Interactive Chess Game",
-    description:
-      "A browser-based 3D chess application featuring realistic piece movement, dynamic lighting, and interactive camera controls.",
-    stack: ["Three.js", "JavaScript", "HTML", "CSS", "Vite", "React"],
-    links: {
-      github: "https://github.com/manish-surya-r/3d-chess-app",
-      live: "https://manish-surya-r.github.io/3d-chess-app/",
-    },
-  },
-  {
-    title: "PyClean: AI-Powered Python Code Beautifier",
-    description:
-      "A web app using the Google Gemini API to refactor and format messy Python code to PEP 8 standards, with before–after comparisons.",
-    stack: ["React", "TypeScript", "Tailwind CSS", "Prism.js", "Google Gemini API"],
-    links: { github: "https://github.com/manish-surya-r/pyclean" },
-  },
-  {
-    title: "Finance Tracker Web App",
-    description:
-      "A personal finance tracker that visualizes income and expenses in real time using interactive charts.",
-    stack: ["React", "TypeScript", "Tailwind CSS", "Chart.js", "Firebase"],
-    links: {
-      github: "https://github.com/manish-surya-r/finance-tracker-app",
-      live: "https://manish-surya-r.github.io/finance-tracker-app/",
-    },
-  },
-  {
-    title: "Simple Unix Shell in C",
-    description:
-      "A console-based Unix-style shell in C supporting command parsing, execution, built-in commands, and basic piping/redirects.",
-    stack: ["C", "Makefile", "Linux"],
-    links: { github: "https://github.com/manish-surya-r/shell-using-c" },
-  },
-  {
-    title: "Pistachio Classification",
-    description:
-      "Built a machine learning model to classify pistachio varieties based on morphological features for quality control automation.",
-    stack: ["Python", "scikit-learn", "pandas", "Matplotlib"],
-    links: {
-      github:
-        "https://github.com/manish-surya/python-projects/tree/main/Pistachio_Classification",
-    },
-  },
-  {
-    title: "Diabetes Prediction Using Neural Networks",
-    description:
-      "Developed a neural network-based model to predict diabetes risk from clinical data using TensorFlow/Keras.",
-    stack: ["Python", "TensorFlow", "pandas", "NumPy", "Streamlit"],
-    links: {
-      github:
-        "https://github.com/manish-surya/machine-learning-projects/tree/main/health-data-projects/diabetes-prediction",
-    },
-  },
-  {
-    title: "Customer Intent Segmentation",
-    description:
-      "Performed customer segmentation using clustering to uncover patterns for personalized marketing strategies.",
-    stack: ["Python", "scikit-learn", "pandas", "Seaborn", "Power BI"],
-    links: {
-      github: "https://github.com/manish-surya/customer-intent-segmentation",
-    },
-  },
-  {
-    title: "Network Intrusion Prediction",
-    description:
-      "Implemented a machine learning intrusion detection system (IDS) to classify network traffic and detect attacks.",
-    stack: ["Python", "scikit-learn", "pandas", "NumPy", "Matplotlib"],
-    links: {
-      github:
-        "https://github.com/manish-surya/python-projects/tree/main/Network_Intrution_Prediction",
-    },
-  },
-];
+  if (!src || hasError) {
+    return (
+      <div className="h-3 bg-gradient-to-r from-indigo-505 via-purple-500 to-teal-400 w-full" />
+    );
+  }
 
-const Projects = () => {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-8" id="projects">
-      <div className="max-w-7xl mx-auto">
-        <SectionWrapper id="projects" title="Projects">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {allProjects.map((proj, i) => {
-              const color = COLORS[i % COLORS.length];
+    <div className="h-44 w-full relative overflow-hidden border-b border-slate-100 dark:border-slate-800 bg-slate-100 dark:bg-slate-900/40">
+      {!loaded && (
+        <div className="absolute inset-0 bg-slate-200 dark:bg-slate-800 animate-pulse" />
+      )}
+      <motion.img
+        initial={{ opacity: 0 }}
+        animate={{ opacity: loaded ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+        src={src}
+        alt={title}
+        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        onLoad={() => setLoaded(true)}
+        onError={() => setHasError(true)}
+      />
+    </div>
+  );
+};
+
+const Projects: React.FC = () => {
+  const [filter, setFilter] = useState<'all' | 'extensions' | 'apps'>('all');
+
+  const extensions = (projectsData.vscodeExtensions || []) as ProjectType[];
+  const applications = (projectsData.applications || []) as ProjectType[];
+
+  const taggedExtensions = extensions.map(p => ({ ...p, category: 'extensions' as const }));
+  const taggedApps = applications.map(p => ({ ...p, category: 'apps' as const }));
+  
+  const allProjects = [...taggedExtensions, ...taggedApps];
+  
+  const filteredProjects = allProjects.filter(proj => {
+    if (filter === 'all') return true;
+    return proj.category === filter;
+  });
+
+  return (
+    <section className="py-20 bg-slate-50 dark:bg-slate-900/10 min-h-screen">
+      <div className="container mx-auto px-6 max-w-6xl">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold tracking-tight">Projects & Extensions</h2>
+          <div className="h-1 bg-amber-500 w-16 mx-auto mt-3 rounded-full"></div>
+          <p className="text-slate-500 dark:text-slate-400 mt-4 max-w-md mx-auto">
+            Explore VS Code extensions, PyPI libraries, databases, and neural models.
+          </p>
+        </div>
+
+        {/* GitHub Profiles Showcase */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-16">
+          <motion.a
+            href="https://github.com/manish-surya"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.02 }}
+            className="flex items-center gap-4 p-5 rounded-2xl bg-white dark:bg-slate-800/40 border border-slate-200/50 dark:border-slate-800/50 shadow-sm backdrop-blur-sm group hover:border-indigo-500 dark:hover:border-indigo-400 transition-all cursor-pointer"
+          >
+            <div className="p-3.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-all">
+              <FaGithub size={24} />
+            </div>
+            <div>
+              <h4 className="text-base font-bold text-slate-800 dark:text-slate-100">AI / ML Projects Repository</h4>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                Explore deep learning models, computer vision architectures, and research codebase.
+              </p>
+              <span className="text-xs text-indigo-600 dark:text-indigo-400 font-semibold mt-2 inline-block hover:underline">
+                github.com/manish-surya &rarr;
+              </span>
+            </div>
+          </motion.a>
+
+          <motion.a
+            href="https://github.com/manish-surya-r"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.02 }}
+            className="flex items-center gap-4 p-5 rounded-2xl bg-white dark:bg-slate-800/40 border border-slate-200/50 dark:border-slate-800/50 shadow-sm backdrop-blur-sm group hover:border-teal-500 dark:hover:border-teal-400 transition-all cursor-pointer"
+          >
+            <div className="p-3.5 rounded-xl bg-teal-50 dark:bg-teal-950/40 text-teal-600 dark:text-teal-400 group-hover:bg-teal-600 group-hover:text-white transition-all">
+              <FaGithub size={24} />
+            </div>
+            <div>
+              <h4 className="text-base font-bold text-slate-800 dark:text-slate-100">Web & Core Tools Repository</h4>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                Explore VS Code extensions, web applications, and CLI developer tools.
+              </p>
+              <span className="text-xs text-teal-600 dark:text-teal-400 font-semibold mt-2 inline-block hover:underline">
+                github.com/manish-surya-r &rarr;
+              </span>
+            </div>
+          </motion.a>
+        </div>
+
+        {/* Filter Tabs */}
+        <div className="flex justify-center gap-2 mb-12 bg-slate-200/50 dark:bg-slate-800/40 p-1.5 rounded-2xl w-fit mx-auto border border-slate-300/30 dark:border-slate-700/30 backdrop-blur-sm">
+          <button
+            onClick={() => setFilter('all')}
+            className={`px-6 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
+              filter === 'all'
+                ? 'bg-amber-500 text-white shadow-sm'
+                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+            }`}
+          >
+            All Work
+          </button>
+          <button
+            onClick={() => setFilter('extensions')}
+            className={`px-6 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
+              filter === 'extensions'
+                ? 'bg-amber-500 text-white shadow-sm'
+                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+            }`}
+          >
+            VS Code Extensions
+          </button>
+          <button
+            onClick={() => setFilter('apps')}
+            className={`px-6 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
+              filter === 'apps'
+                ? 'bg-amber-500 text-white shadow-sm'
+                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+            }`}
+          >
+            Apps & CLIs
+          </button>
+        </div>
+
+        {/* Grid Layout */}
+        <motion.div 
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((proj, i) => {
+              const cardColor = COLORS[i % COLORS.length];
               return (
                 <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="shadow-lg overflow-hidden bg-white dark:bg-slate-800"
+                  layout
+                  key={proj.title}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3 }}
+                  className="bg-white dark:bg-slate-800/30 rounded-3xl shadow-sm border border-slate-200/50 dark:border-slate-800/50 flex flex-col justify-between overflow-hidden group hover:shadow-md transition-all backdrop-blur-sm hover:scale-[1.01]"
                 >
-                  <div className="p-6">
-                    <h3
-                      className="text-2xl font-bold mb-2"
-                      style={{ color }}
-                    >
-                      {proj.title}
-                    </h3>
-                    <p className="text-gray-700 dark:text-gray-300 mb-4">
-                      {proj.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {proj.stack.map((tech, j) => (
-                        <span
-                          key={j}
-                          className="px-2 py-1 rounded-full text-xs font-medium"
-                          style={{
-                            backgroundColor: `${COLORS[(i + j) % COLORS.length]}22`,
-                            color: COLORS[(i + j) % COLORS.length],
-                          }}
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                  {/* Card Visual / Thumbnail Header (Fixed-Height gracefully handled) */}
+                  <ProjectImage src={proj.image} title={proj.title} />
+
+                  {/* Card Content */}
+                  <div className="p-6 flex-grow flex flex-col justify-between">
+                    <div>
+                      {/* Badge / Category */}
+                      <span className="inline-block text-[10px] uppercase font-bold tracking-widest px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-400 mb-3">
+                        {proj.category === 'extensions' ? 'VS Code Extension' : 'Package / App'}
+                      </span>
+
+                      <h3 className="text-xl font-bold tracking-tight mb-2 group-hover:underline transition-all" style={{ color: cardColor }}>
+                        {proj.title}
+                      </h3>
+
+                      <p className="text-sm text-slate-600 dark:text-slate-350 leading-relaxed mb-6">
+                        {proj.description}
+                      </p>
                     </div>
-                    <div className="flex gap-4">
-                      {proj.links.github && (
-                        <a
-                          href={proj.links.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2"
-                        >
-                          <GitHubIcon /> Code
-                        </a>
-                      )}
-                      {proj.links.live && (
-                        <a
-                          href={proj.links.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2"
-                        >
-                          <ExternalLinkIcon /> Live
-                        </a>
-                      )}
+
+                    <div>
+                      {/* Tech Badges */}
+                      <div className="flex flex-wrap gap-1.5 mb-6">
+                        {proj.stack.map((tech, j) => (
+                          <span
+                            key={j}
+                            className="px-2 py-0.5 rounded-lg text-[10px] font-semibold"
+                            style={{
+                              backgroundColor: `${COLORS[(i + j) % COLORS.length]}15`,
+                              color: COLORS[(i + j) % COLORS.length],
+                            }}
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Action Links */}
+                      <div className="flex flex-wrap gap-3 pt-4 border-t border-slate-100 dark:border-slate-800/80">
+                        {proj.links.marketplace && (
+                          <a
+                            href={proj.links.marketplace}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1.5 text-xs font-bold text-blue-500 hover:underline"
+                          >
+                            <VscCode size={16} /> VS Code
+                          </a>
+                        )}
+                        {proj.links.pypi && (
+                          <a
+                            href={proj.links.pypi}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1.5 text-xs font-bold text-green-500 hover:underline"
+                          >
+                            <SiPypi size={14} /> PyPI Package
+                          </a>
+                        )}
+                        {proj.links.github && (
+                          <a
+                            href={proj.links.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1.5 text-xs font-bold text-slate-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                          >
+                            <FaGithub size={14} /> Code
+                          </a>
+                        )}
+                        {proj.links.live && (
+                          <a
+                            href={proj.links.live}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1.5 text-xs font-bold text-teal-500 hover:underline"
+                          >
+                            <FaExternalLinkAlt size={12} /> Live Demo
+                          </a>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </motion.div>
               );
             })}
-          </div>
-        </SectionWrapper>
+          </AnimatePresence>
+        </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 

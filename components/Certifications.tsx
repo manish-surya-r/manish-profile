@@ -1,33 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import certificationsData from '../data/certifications.json';
 
-const SectionWrapper: React.FC<{ children: React.ReactNode; id: string; title: string }> = ({ children, id, title }) => (
-  <section id={id} className="py-20 lg:py-28 bg-light dark:bg-dark">
-    <div className="container mx-auto px-6">
-      <div className="text-center mb-16">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.6 }}
-          className="text-3xl md:text-4xl font-bold mb-4"
-        >
-          {title}
-        </motion.h2>
-        <motion.div
-          initial={{ width: 0 }}
-          whileInView={{ width: '6rem' }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="h-1 bg-accent-indigo dark:bg-accent-teal mx-auto"
-        ></motion.div>
-      </div>
-      {children}
-    </div>
-  </section>
-);
-
-// Type definition
 type Certification = {
   title: string;
   institution: string;
@@ -35,59 +9,20 @@ type Certification = {
   credential_link: string;
 };
 
-// ✅ Fixed: removed extra `[` and closing bracket
-const certifications: Certification[] = [
-  {
-    title: "Bayesian Statistics",
-    institution: "University of California, Santa Cruz",
-    cert_id: "KF9B7LEVQF5C",
-    credential_link: "https://www.coursera.org/account/accomplishments/specialization/certificate/KF9B7LEVQF5C"
-  },
-  {
-    title: "Design of Experiments",
-    institution: "Arizona State University",
-    cert_id: "SK87JFF93GRJ",
-    credential_link: "https://www.coursera.org/account/accomplishments/specialization/certificate/SK87JFF93GRJ"
-  },
-  {
-    title: "Data Science Professional",
-    institution: "365 Data Science",
-    cert_id: "DD-D1F4867EFE",
-    credential_link: "https://learn.365datascience.com/certificates/DD-D1F4867EFE/"
-  },
-  {
-    title: "Python Essentials for MLOps",
-    institution: "Duke University",
-    cert_id: "E7CS9KT8XSRB",
-    credential_link: "https://www.coursera.org/account/accomplishments/verify/E7CS9KT8XSRB"
-  },
-  {
-    title: "Product Management for AI and Data Science",
-    institution: "365 Data Science",
-    cert_id: "CC-8281B931B1",
-    credential_link: "https://learn.365datascience.com/certificates/CC-8281B931B1/"
-  }
-];
-
-// 10 distinct colors for certifications
-const certColors = [
-  '#6366F1', // Indigo
-  '#14B8A6', // Teal
-  '#F59E0B', // Amber
-  '#EC4899', // Pink
-  '#10B981', // Emerald
-  '#F43F5E', // Rose
-  '#8B5CF6', // Violet
-  '#F97316', // Orange
-  '#3B82F6', // Blue
-  '#22D3EE', // Cyan
-];
+const certColors = ['#6366F1', '#14B8A6', '#F59E0B', '#EC4899', '#10B981'];
 
 const Certifications: React.FC = () => {
+  const certifications = certificationsData as Certification[];
+
   return (
-    <SectionWrapper id="certifications" title="Certifications">
-      <div className="max-w-4xl mx-auto">
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <section className="py-16 bg-slate-50 dark:bg-slate-900/10">
+      <div className="container mx-auto px-6 max-w-4xl">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold tracking-tight">Professional Certifications</h2>
+          <div className="h-1 bg-pink-500 w-16 mx-auto mt-3 rounded-full"></div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {certifications.map((cert, index) => {
             const color = certColors[index % certColors.length];
 
@@ -99,28 +34,31 @@ const Certifications: React.FC = () => {
                 rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="block p-5 rounded-lg shadow bg-white dark:bg-slate-800 border-l-4 hover:shadow-lg transition cursor-pointer"
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.08 }}
+                className="block p-5 rounded-2xl bg-white dark:bg-slate-800/40 border-l-4 hover:shadow-md transition-all hover:scale-[1.01] cursor-pointer border border-slate-200/50 dark:border-slate-800/50 backdrop-blur-sm"
                 style={{ borderLeftColor: color, borderLeftWidth: '4px' }}
               >
-                <h3 className="text-lg font-semibold mb-1" style={{ color }}>
-                  {cert.title}
-                </h3>
-
-                <p className="text-sm font-semibold italic text-slate-600 dark:text-slate-400">
-                  {cert.institution}
-                </p>
-
-                <p className="text-xs opacity-75 mt-1">
-                  Certificate ID: <span className="font-semibold">{cert.cert_id}</span>
-                </p>
+                <div className="flex flex-col justify-between h-full">
+                  <div>
+                    <h3 className="text-base font-bold mb-1 tracking-tight hover:underline transition-all" style={{ color }}>
+                      {cert.title}
+                    </h3>
+                    <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">
+                      {cert.institution}
+                    </p>
+                  </div>
+                  <div className="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center text-[10px] text-slate-400">
+                    <span>Credential ID: {cert.cert_id}</span>
+                    <span className="text-indigo-500 dark:text-indigo-400 font-semibold hover:underline">Verify &rarr;</span>
+                  </div>
+                </div>
               </motion.a>
             );
           })}
-        </ul>
+        </div>
       </div>
-    </SectionWrapper>
+    </section>
   );
 };
 

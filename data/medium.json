@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Method Resolution Order (MRO) in Python: A Complete Guide",
+    "description": "An in-depth article analyzing Python's multiple inheritance lookup mechanism, explaining the C3 Linearization algorithm, and examining __mro__ in detail with diagrams and code examples.",
+    "link": "https://medium.com/@manish.surya.r/method-resolution-order-mro-in-python-a-complete-guide-63933986340a#examining-mro-__mro__-and-mro",
+    "readTime": "8 min read",
+    "publishedDate": "Oct 2024",
+    "isPopular": true
+  },
+  {
+    "title": "Zeal Think",
+    "description": "An interactive thinking canvas and digital design sandbox, facilitating structural mapping, ideation, and architectural brainstorms.",
+    "link": "https://zeal-think.vercel.app/",
+    "readTime": "Web App",
+    "publishedDate": "Live Project",
+    "isPopular": false
+  },
+  {
+    "title": "Manish Surya on Medium",
+    "description": "Check out my other articles on Medium, covering Python internals, full-stack web development, software architecture, and AI-driven solutions.",
+    "link": "https://medium.com/@manish.surya.r",
+    "readTime": "Profile Page",
+    "publishedDate": "Active Writer",
+    "isPopular": false
+  }
+]
